@@ -9,14 +9,7 @@ import re
 lang = input("Language to translate to: ").lower()
 file_name = input('File Name: ')
 
-def translate(text):
-
-    global translated
-    global lang
-
-    # Check to see if translation has already been done
-    if text in translated:
-        return translated[text]
+def translate(text lang):
 
     # Use GTranslate and compare with list of translations
     translator = Translator(service_urls=['translate.google.com'])
@@ -50,19 +43,14 @@ def parse_root(file_name, lang):
 
                 # ensure words are in string
                 if any(a.isalpha() for a in elem_text):
-                    translation = translate(elem_text)
+                    translation = translate(elem_text, lang)
                     if translation:
                         xmlstr = xmlstr.replace(elem_text, translation)
                         
         # Call function on children
         parse_root(child)
 
-    return xmlstr
-
-
-xml_str = parse_root(root)
-
-# Save XML string as XML file
-with open(f"/Finished/{file_name}_translated.xml", "wb") as f:
-	f.write(xmlstr.encode('utf-8'))
+	# Save XML string as XML file
+	with open(f"/Finished/{file_name}_translated.xml", "wb") as f:
+		f.write(xmlstr.encode('utf-8'))
 
