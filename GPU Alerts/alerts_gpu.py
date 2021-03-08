@@ -29,6 +29,11 @@ def check_bestbuy(URL):
 	in_stock = False
 	user_agent = "Mozilla/5.0 (iPhone; CPU iPhone OS 5_1 like Mac OS X) AppleWebKit/534.46 (KHTML, like Gecko) Version/5.1 Mobile/9B179 Safari/7534.48.3"
 	r = request.get(URL, headers = {'User-agent':user_agent})
+	
+	if 'Access Denied' in r.text:
+		print("Something went wrong")
+		exit()
+	
 	if 'Sold Out' in r.text:
 		in_stock = False
 		print('Sold Out\n\n\n')
