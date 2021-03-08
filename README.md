@@ -2,6 +2,11 @@
 A repo for automating tasks
 
 
+## Get Email Alerts for Available GPUs
+
+- Enter your email and username
+- If you want, add additional GPU listings or create your own list by inserting links from NewEgg or Bestbuy. Ensure to put each link on its own line.
+
 ## Translate a complex XML File
 
 See xml_translate.py:https://github.com/scott-w-maxwell/automation/blob/main/xml_translate.py
